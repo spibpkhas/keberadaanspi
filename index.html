@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a192f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Keberadaan SPI">
+    <title>KEBERADAAN SEKTOR PEMBANGUNAN INSTRUKSIONAL</title>
+
+    <!-- Ikon Pintasan & Aplikasi (bpkhas.png dengan fallback SVG korporat) -->
+    <link rel="icon" type="image/png" href="bpkhas.png">
+    <link rel="apple-touch-icon" href="bpkhas.png">
+    <link id="dynamic-manifest" rel="manifest" href="">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f9',
+                            100: '#dce5f2',
+                            200: '#b9cce5',
+                            300: '#8baad4',
+                            400: '#5b83be',
+                            500: '#3962a3',
+                            600: '#294b86',
+                            700: '#213c6d',
+                            800: '#162b52',
+                            900: '#0a192f',
+                            950: '#060f1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Konfigurasi Dinamik PWA Manifest menggunakan bpkhas.png & Cetakan PDF Fit-to-Screen -->
+    <script>
+        (function setupPWAManifest() {
+            const manifest = {
+                name: "KEBERADAAN SEKTOR PEMBANGUNAN INSTRUKSIONAL",
+                short_name: "Keberadaan SPI",
+                description: "Sistem Rekod Keberadaan Staf Sektor Pembangunan Instruksional BPKhas",
+                start_url: "./",
+                display: "standalone",
+                background_color: "#ffffff",
+                theme_color: "#0a192f",
+                icons: [
+                    { src: "bpkhas.png", sizes: "192x192", type: "image/png", purpose: "any maskable" },
+                    { src: "bpkhas.png", sizes: "512x512", type: "image/png", purpose: "any maskable" }
+                ]
+            };
+            const stringManifest = JSON.stringify(manifest);
+            const blob = new Blob([stringManifest], { type: 'application/json' });
+            const manifestURL = URL.createObjectURL(blob);
+            document.getElementById('dynamic-manifest').setAttribute('href', manifestURL);
+        })();
+    </script>
+
+    <style>
+        /* Gaya Cetakan PDF (Fit to Screen) */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 10mm;
+            }
+            body * {
+                visibility: hidden;
+            }
+            #pdf-print-area, #pdf-print-area * {
+                visibility: visible;
+            }
+            #pdf-print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100% !important;
+                max-width: 100% !important;
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                font-size: 9pt !important;
+            }
+            th, td {
+                border: 1px solid #cbd5e1 !important;
+                padding: 5px 6px !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-navy-900 selection:text-white min-h-screen flex flex-col">
+
+    <!-- ==================== HEADER UTAMA (NAVY BLUE & WHITE) ==================== -->
+    <header class="bg-navy-900 text-white shadow-lg sticky top-0 z-40 border-b border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+            <div class="flex items-center justify-between gap-3">
+                <!-- Logo BPKhas & Tajuk Aplikasi -->
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                    <div class="bg-white p-1.5 sm:p-2 rounded-xl shadow-md flex-shrink-0 border border-navy-200 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14">
+                        <img
+                            id="header-logo"
+                            src="bpkhas.png"
+                            alt="Logo BPKhas"
+                            class="w-full h-full object-contain rounded-lg"
+                            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%230a192f%22/><text x=%2250%22 y=%2245%22 font-family=%22Arial,sans-serif%22 font-size=%2222%22 font-weight=%22bold%22 fill=%22%23ffffff%22 text-anchor=%22middle%22>BPKhas</text><text x=%2250%22 y=%2268%22 font-family=%22Arial,sans-serif%22 font-size=%2214%22 font-weight=%22bold%22 fill=%22%2393c5fd%22 text-anchor=%22middle%22>SPI</text></svg>';"
+                        >
+                    </div>
+                    <div class="min-w-0">
+                        <div class="hidden">
+                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold bg-navy-800 text-blue-200 border border-navy-700">
+                                <span id="sync-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span id="sync-label">Masa Nyata</span>
+                            </span>
+                        </div>
+                        <h1 id="app-main-title" class="font-display font-extrabold text-sm sm:text-lg md:text-xl tracking-tight text-white leading-tight truncate">
+                            KEBERADAAN SEKTOR PEMBANGUNAN INSTRUKSIONAL
+                        </h1>
+                        <p id="app-sub-title" class="text-xs text-navy-200 truncate hidden sm:block">
+                            Bahagian Pendidikan Khas • Rekod Keberadaan SPI
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons (Desktop & Mobile) -->
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <!-- Butang Install Shortcut jika disokong -->
+                    <button id="btn-install-app" type="button" onclick="triggerInstallPWA()" class="hidden items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-3 py-2 rounded-xl shadow transition cursor-pointer">
+                        <i class="fa-solid fa-download"></i>
+                        <span class="hidden md:inline">Pasang Aplikasi</span>
+                    </button>
+
+                    <!-- Butang ISI REKOD -->
+                    <button type="button" onclick="openRecordModal()" class="flex items-center gap-2 bg-white text-navy-900 hover:bg-navy-50 active:scale-95 font-bold text-xs sm:text-sm px-3.5 py-2.5 sm:px-4 sm:py-2.5 rounded-xl shadow-md transition cursor-pointer">
+                        <i class="fa-solid fa-pen-to-square text-navy-800"></i>
+                        <span>ISI REKOD</span>
+                    </button>
+
+                    <!-- Butang Panel Admin -->
+                    <button type="button" onclick="openAdminAuthModal()" class="flex items-center justify-center w-10 h-10 sm:w-auto sm:px-3.5 sm:py-2.5 rounded-xl bg-navy-800 hover:bg-navy-700 text-white border border-navy-700 transition cursor-pointer" title="Tetapan Admin">
+                        <i class="fa-solid fa-user-shield text-sm"></i>
+                        <span class="hidden lg:inline ml-2 text-xs font-semibold">Admin</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== PENGUMUMAN MELEKAT (STICKY DI ATAS TARIKH) ==================== -->
+    <div id="sticky-announcement-bar" class="hidden sticky top-[68px] sm:top-[84px] z-30 bg-gradient-to-r from-amber-50 via-white to-blue-50 border-b border-amber-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3 min-w-0 flex-grow cursor-pointer" onclick="openAnnouncementPopup(true)">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-bullhorn text-xs animate-bounce"></i>
+                    </span>
+                    <img id="sticky-ann-thumb" src="" alt="Lampiran" class="hidden w-9 h-9 rounded-lg object-cover border border-slate-200 flex-shrink-0">
+                    <div class="min-w-0 flex-grow">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded bg-navy-900 text-white">PENGUMUMAN</span>
+                            <h3 id="sticky-ann-title" class="text-xs sm:text-sm font-extrabold text-navy-900 truncate"></h3>
+                        </div>
+                        <p id="sticky-ann-text" class="text-xs text-slate-600 truncate mt-0.5"></p>
+                    </div>
+                </div>
+                <button type="button" onclick="openAnnouncementPopup(true)" class="flex-shrink-0 text-xs font-bold text-navy-900 hover:text-blue-700 bg-white border border-slate-200 px-2.5 py-1.5 rounded-lg shadow-xs cursor-pointer">
+                    Lihat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== KANDUNGAN UTAMA ==================== -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 space-y-5">
+
+        <!-- Bar Tarikh & Hari + Tab Menu 1 Baris (4 Tab Utama) -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-4 sm:p-5 space-y-5">
+            <!-- Pemilih Tarikh & Hari (Susun Atur Mendatar) -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-9 h-9 rounded-xl bg-navy-900 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+                        <i class="fa-regular fa-calendar-days text-sm"></i>
+                    </span>
+                    <div>
+                        <p id="display-date-full" class="text-sm sm:text-base font-extrabold text-navy-900 tracking-tight"></p>
+                    </div>
+                </div>
+
+                <div class="inline-flex flex-wrap items-center justify-between sm:justify-end gap-2 bg-navy-50 px-3 py-1.5 rounded-2xl border border-navy-100">
+                    <button type="button" onclick="changeDate(-1)" class="w-8 h-8 rounded-xl bg-white hover:bg-navy-100 text-navy-900 flex items-center justify-center transition shadow-xs cursor-pointer" title="Hari Sebelum">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <input type="date" id="selected-date" onchange="onDateChange()" class="bg-transparent font-extrabold text-xs sm:text-sm text-navy-900 focus:outline-none cursor-pointer px-1">
+                    <button type="button" onclick="changeDate(1)" class="w-8 h-8 rounded-xl bg-white hover:bg-navy-100 text-navy-900 flex items-center justify-center transition shadow-xs cursor-pointer" title="Hari Berikutnya">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                    <button type="button" onclick="setToday()" class="text-xs font-bold bg-navy-900 text-white hover:bg-navy-800 px-3 py-1.5 rounded-xl transition cursor-pointer ml-1">
+                        Hari Ini
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB MENU STATISTIK & PENAPIS: 1 BARIS (4 TAB UTAMA), SEJAJAR TENGAH, DINAMIK DARI ADMIN -->
+            <div id="dynamic-tabs-container" class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5 max-w-5xl mx-auto">
+                <!-- Tab dijana secara dinamik oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- Bar Carian & Penapis Kategori -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-3.5 sm:p-4">
+            <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+                <!-- Carian Nama -->
+                <div class="relative flex-grow">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="search-input" oninput="renderAllViews()" placeholder="Cari nama pegawai, jawatan atau jenis alasan..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-navy-900 focus:border-navy-900 outline-none transition">
+                </div>
+
+                <!-- Filter Kategori Jawatan -->
+                <div class="flex items-center gap-2">
+                    <select id="filter-category" onchange="renderAllViews()" class="w-full sm:w-auto px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none cursor-pointer">
+                        <option value="ALL">Semua Kategori (Pegawai & AKP)</option>
+                        <option value="PEGAWAI">Pegawai Sahaja (TP / KPP / PP)</option>
+                        <option value="AKP">Anggota Kumpulan Pelaksana (AKP)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAPARAN SENARAI KEBERADAAN ==================== -->
+        <section>
+            <!-- Paparan Komputer / Tablet Besar (Table View - Hidden on Mobile < md) -->
+            <div class="hidden md:block bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-navy-900 text-white text-xs uppercase tracking-wider">
+                                <th class="py-3.5 px-4 font-bold w-12 text-center">Bil.</th>
+                                <th class="py-3.5 px-4 font-bold">Nama & Jawatan</th>
+                                <th class="py-3.5 px-4 font-bold w-28">Kategori</th>
+                                <th class="py-3.5 px-4 font-bold w-56">Status Keberadaan</th>
+                                <th class="py-3.5 px-4 font-bold">Sebab</th>
+                            </tr>
+                        </thead>
+                        <tbody id="desktop-table-body" class="divide-y divide-slate-200 text-sm">
+                            <!-- Rows dijana melalui JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Paparan Smartphone / Tablet Kecil (Card View - Hidden on Desktop >= md) -->
+            <div id="mobile-card-view" class="grid grid-cols-1 gap-3 md:hidden">
+                <!-- Cards dijana melalui JavaScript -->
+            </div>
+
+            <!-- Keadaan Kosong (Jika carian tiada padanan) -->
+            <div id="empty-state" class="hidden bg-white rounded-2xl p-10 text-center border border-slate-200 mt-3">
+                <div class="w-14 h-14 bg-navy-50 text-navy-800 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-clipboard-check text-2xl"></i>
+                </div>
+                <h3 id="empty-state-title" class="font-bold text-navy-900">Tiada rekod ditemui</h3>
+                <p id="empty-state-desc" class="text-xs text-slate-500 mt-1">Semua staf berada di pejabat atau tiada rekod bagi pilihan tab semasa.</p>
+                <button type="button" onclick="resetMainFilters()" class="mt-4 px-4 py-2 bg-navy-900 text-white text-xs font-bold rounded-xl cursor-pointer">
+                    Set Semula Paparan
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+            <p class="font-semibold text-navy-900">Sektor Pembangunan Instruksional • Bahagian Pendidikan Khas (BPKhas)</p>
+            <p>Staf yang tidak mengisi borang secara automatik dikira hadir di pejabat.</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 pt-2 border-t border-slate-100 text-center">
+            <p class="text-[10px] text-slate-400 tracking-wide">created by sabsolhi_skpkmiri</p>
+        </div>
+    </footer>
+
+    <!-- ==================== MODAL 0: POP-UP PENGUMUMAN AUTOMATIK ==================== -->
+    <div id="announcement-popup-modal" class="hidden fixed inset-0 z-50 bg-navy-950/75 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden border border-slate-200 animate-fade-in">
+            <div class="bg-navy-900 text-white px-5 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center">
+                        <i class="fa-solid fa-bullhorn text-sm"></i>
+                    </span>
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 block">Makluman Sektor</span>
+                        <h2 id="popup-ann-title" class="font-display font-bold text-base leading-tight">PENGUMUMAN</h2>
+                    </div>
+                </div>
+                <button type="button" onclick="closeModal('announcement-popup-modal')" class="w-8 h-8 rounded-xl bg-navy-800 hover:bg-navy-700 text-white flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-5 space-y-4 max-h-[75vh] overflow-y-auto">
+                <div id="popup-ann-img-wrap" class="hidden rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
+                    <img id="popup-ann-img" src="" alt="Gambar Pengumuman" class="w-full max-h-72 object-contain mx-auto">
+                </div>
+                <div id="popup-ann-body" class="text-sm text-slate-700 whitespace-pre-line leading-relaxed"></div>
+            </div>
+            <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex justify-end">
+                <button type="button" onclick="closeModal('announcement-popup-modal')" class="px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold shadow cursor-pointer">
+                    Faham & Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 1: BORANG REKOD KEBERADAAN (TIADA DI PEJABAT / TIDAK HADIR) ==================== -->
+    <div id="record-modal" class="hidden fixed inset-0 z-50 bg-navy-950/70 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden border border-slate-200 my-auto">
+            <!-- Modal Header -->
+            <div class="bg-navy-900 text-white px-5 py-4 flex items-center justify-between">
+                <div>
+                    <h2 class="font-display font-bold text-base sm:text-lg">Borang Keberadaan SPI</h2>
+                    <p class="text-xs text-navy-200" id="modal-date-subtitle">Khusus untuk staf yang tiada di pejabat / tidak hadir sahaja</p>
+                </div>
+                <button type="button" onclick="closeModal('record-modal')" class="w-8 h-8 rounded-xl bg-navy-800 hover:bg-navy-700 text-white flex items-center justify-center transition cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Form -->
+            <form id="attendance-form" onsubmit="saveAttendanceRecord(event)" class="p-5 space-y-4 max-h-[82vh] overflow-y-auto">
+                <!-- Peringatan Automatik -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 flex items-start gap-2.5 text-xs text-navy-900">
+                    <i class="fa-solid fa-circle-info text-blue-600 mt-0.5 text-sm"></i>
+                    <p>Borang ini hanya perlu diisi sekiranya staf <strong>Tiada Di Pejabat</strong> atau <strong>Tidak Hadir (Cuti)</strong>. Staf yang berada di pejabat tidak perlu mengisi borang ini.</p>
+                </div>
+
+                <!-- Pilih Nama Staf -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Nama Pegawai / Staf <span class="text-red-500">*</span></label>
+                    <select id="form-staff-id" required onchange="prefillExistingRecord()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-navy-900 focus:ring-2 focus:ring-navy-900 focus:border-navy-900 outline-none">
+                        <option value="">-- Sila Pilih Nama --</option>
+                    </select>
+                </div>
+
+                <!-- Tarikh Rekod & Pilihan Lebih 1 Hari -->
+                <div class="space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <label id="label-form-date-start" class="block text-xs font-bold uppercase tracking-wider text-navy-900">Tarikh <span class="text-red-500">*</span></label>
+                        <label class="inline-flex items-center gap-2 cursor-pointer bg-slate-100 hover:bg-slate-200/70 px-2.5 py-1 rounded-lg border border-slate-200 transition">
+                            <input type="checkbox" id="form-multi-day" onchange="toggleMultiDayDate()" class="w-3.5 h-3.5 accent-navy-900 rounded">
+                            <span class="text-[11px] font-bold text-navy-900">Lebih 1 hari</span>
+                        </label>
+                    </div>
+                    <div id="date-inputs-grid" class="grid grid-cols-1 gap-3">
+                        <div>
+                            <span id="sublabel-date-start" class="hidden block text-[11px] font-semibold text-slate-500 mb-1">Tarikh Mula</span>
+                            <input type="date" id="form-date" required onchange="syncEndDateMin(); prefillExistingRecord()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                        </div>
+                        <div id="form-date-end-wrap" class="hidden">
+                            <span class="block text-[11px] font-semibold text-slate-500 mb-1">Tarikh Hingga</span>
+                            <input type="date" id="form-date-end" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kategori Utama Alasan (2 Kategori Utama) -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Kategori Utama <span class="text-red-500">*</span></label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="mainCategory" value="TIADA DI PEJABAT" checked onchange="updateReasonDropdown()" class="peer sr-only">
+                            <div class="p-3 rounded-xl border-2 border-slate-200 peer-checked:border-blue-600 peer-checked:bg-blue-50/70 transition text-center">
+                                <i class="fa-solid fa-briefcase text-blue-700 text-base mb-1 block"></i>
+                                <span class="text-xs font-extrabold text-navy-900 block">TIADA DI PEJABAT</span>
+                                <span class="text-[10px] text-slate-500">Mesyuarat / Urusan Rasmi</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="mainCategory" value="TIDAK HADIR" onchange="updateReasonDropdown()" class="peer sr-only">
+                            <div class="p-3 rounded-xl border-2 border-slate-200 peer-checked:border-amber-600 peer-checked:bg-amber-50/70 transition text-center">
+                                <i class="fa-solid fa-umbrella-beach text-amber-600 text-base mb-1 block"></i>
+                                <span class="text-xs font-extrabold text-navy-900 block">TIDAK HADIR</span>
+                                <span class="text-[10px] text-slate-500">Semua Kategori Cuti</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Jenis Alasan / Cuti Terperinci -->
+                <div>
+                    <label id="label-reason-detail" class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Perincian Alasan <span class="text-red-500">*</span></label>
+                    <select id="form-reason-detail" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                        <!-- Pilihan dijana secara dinamik oleh JS -->
+                    </select>
+                </div>
+
+                <!-- Pecahan Borang Khusus Untuk TIADA DI PEJABAT -->
+                <div id="out-office-extra-fields" class="space-y-3.5">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Lokasi <span class="text-red-500">*</span></label>
+                        <input type="text" id="form-location" placeholder="Contoh: Bilik Mesyuarat Utama, Aras 4 / Putrajaya" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Tajuk Mesyuarat / Kursus <span class="text-red-500">*</span></label>
+                        <input type="text" id="form-event-title" placeholder="Contoh: Mesyuarat Penyelarasan Kurikulum Pendidikan Khas" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Catatan (Sekiranya Ada)</label>
+                        <textarea id="form-notes" rows="2" placeholder="Catatan tambahan (jika berkaitan)..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none"></textarea>
+                    </div>
+                </div>
+
+                <!-- Masa Keluar / Mula & Tamat -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Masa Mula (Pilihan)</label>
+                        <input type="time" id="form-time-start" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Masa Tamat (Pilihan)</label>
+                        <input type="time" id="form-time-end" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                    </div>
+                </div>
+
+                <!-- Butang Tindakan -->
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5 border-t border-slate-100">
+                    <button type="button" id="btn-delete-record" onclick="clearStaffRecordFromModal()" class="hidden w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition cursor-pointer">
+                        <i class="fa-solid fa-building-circle-check mr-1"></i> Tukar ke Pejabat
+                    </button>
+                    <div class="flex items-center justify-end gap-2.5 w-full sm:w-auto ml-auto">
+                        <button type="button" onclick="closeModal('record-modal')" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs sm:text-sm font-semibold transition cursor-pointer">
+                            Batal
+                        </button>
+                        <button type="submit" id="btn-submit-record" class="px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs sm:text-sm font-bold shadow-md transition flex items-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Simpan Rekod</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 2: PENGESAHAN KATA LALUAN ADMIN ==================== -->
+    <div id="admin-auth-modal" class="hidden fixed inset-0 z-50 bg-navy-950/70 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden border border-slate-200">
+            <div class="bg-navy-900 text-white px-5 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-lock text-blue-300"></i>
+                    <h2 class="font-display font-bold text-base">Akses Pentadbir (Admin)</h2>
+                </div>
+                <button type="button" onclick="closeModal('admin-auth-modal')" class="w-8 h-8 rounded-xl bg-navy-800 hover:bg-navy-700 text-white flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form onsubmit="verifyAdminPin(event)" class="p-5 space-y-4">
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Sila masukkan kata laluan pentadbir untuk mengurus senarai staf, laporan PDF, pengumuman, tab menu, atau menetapkan semula rekod sistem.
+                </p>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Kata Laluan Admin</label>
+                    <input type="password" id="admin-pin-input" required placeholder="Masukkan kata laluan..." class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-center font-bold tracking-wider text-base text-navy-900 focus:ring-2 focus:ring-navy-900 outline-none">
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeModal('admin-auth-modal')" class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-600 cursor-pointer">Batal</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold shadow cursor-pointer">Log Masuk</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 3: PANEL KAWALAN ADMIN PENUH ==================== -->
+    <div id="admin-panel-modal" class="hidden fixed inset-0 z-50 bg-navy-950/75 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden border border-slate-200 my-auto flex flex-col max-h-[92vh]">
+            <!-- Admin Header -->
+            <div class="bg-navy-900 text-white px-5 py-4 flex items-center justify-between flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-navy-800 border border-navy-700 flex items-center justify-center">
+                        <i class="fa-solid fa-sliders text-blue-300"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-display font-bold text-base sm:text-lg">Panel Kawalan Pentadbir SPI</h2>
+                        <p class="text-xs text-navy-200">Pengurusan Staf, Laporan PDF, Pengumuman, Tab Menu & Sistem</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeModal('admin-panel-modal')" class="w-9 h-9 rounded-xl bg-navy-800 hover:bg-navy-700 text-white flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Admin Navigation Tabs -->
+            <div class="bg-slate-100 px-4 pt-3 border-b border-slate-200 flex gap-1.5 overflow-x-auto flex-shrink-0">
+                <button type="button" onclick="switchAdminTab('reports')" id="tab-btn-reports" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold bg-white text-navy-900 border-t border-x border-slate-200 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-file-pdf mr-1.5 text-red-600"></i> Laporan & Tapisan PDF
+                </button>
+                <button type="button" onclick="switchAdminTab('announcement')" id="tab-btn-announcement" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-600 hover:text-navy-900 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-bullhorn mr-1.5 text-amber-600"></i> Pengumuman
+                </button>
+                <button type="button" onclick="switchAdminTab('staff')" id="tab-btn-staff" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-600 hover:text-navy-900 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-users-gear mr-1.5"></i> Urus Staf
+                </button>
+                <button type="button" onclick="switchAdminTab('tabs')" id="tab-btn-tabs" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-600 hover:text-navy-900 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-table-columns mr-1.5"></i> Urus Tab Menu
+                </button>
+                <button type="button" onclick="switchAdminTab('system')" id="tab-btn-system" class="admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-600 hover:text-navy-900 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-shield-halved mr-1.5"></i> Sistem & Reset
+                </button>
+            </div>
+
+            <!-- Admin Tab Contents -->
+            <div class="p-4 sm:p-6 overflow-y-auto flex-grow space-y-6">
+
+                <!-- TAB 1: LAPORAN & TAPISAN PDF (TAHUNAN, BULANAN, INDIVIDU) -->
+                <div id="admin-tab-reports" class="space-y-5">
+                    <!-- Kawalan Tapisan & Jenis Laporan -->
+                    <div class="bg-navy-50/70 border border-navy-100 rounded-2xl p-4 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-navy-100 pb-3">
+                            <div>
+                                <h3 class="font-bold text-sm text-navy-900">Jana Laporan & Rekod Mengikut Tahun</h3>
+                                <p class="text-xs text-slate-500">Semua rekod disimpan secara automatik mengikut tahun. Tapis mengikut staf, jenis cuti atau tempoh laporan.</p>
+                            </div>
+                            <button type="button" onclick="printReportToPDF()" class="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow cursor-pointer">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                <span>Muat Turun / PDF</span>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                            <!-- Tahun Rekod -->
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase text-navy-900 mb-1">Tahun Rekod</label>
+                                <select id="admin-filter-year" onchange="loadYearlyRecordsForAdmin()" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-bold text-navy-900 outline-none">
+                                    <!-- Dijana JS -->
+                                </select>
+                            </div>
+
+                            <!-- Jenis Laporan PDF -->
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase text-navy-900 mb-1">Format Laporan</label>
+                                <select id="admin-report-type" onchange="toggleMonthSelector(); renderAdminReportTable()" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-bold text-navy-900 outline-none">
+                                    <option value="YEARLY">Laporan Tahunan (Penuh Sektor)</option>
+                                    <option value="MONTHLY">Laporan Bulanan (Penuh Sektor)</option>
+                                    <option value="INDIVIDUAL_YEARLY">Laporan Individu (Tahunan)</option>
+                                    <option value="INDIVIDUAL_MONTHLY">Laporan Individu (Bulanan)</option>
+                                </select>
+                            </div>
+
+                            <!-- Pilih Bulan (Jika Bulanan) -->
+                            <div id="admin-month-wrap" class="hidden">
+                                <label class="block text-[11px] font-bold uppercase text-navy-900 mb-1">Pilih Bulan</label>
+                                <select id="admin-filter-month" onchange="renderAdminReportTable()" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-bold text-navy-900 outline-none">
+                                    <option value="01">Januari</option>
+                                    <option value="02">Februari</option>
+                                    <option value="03">Mac</option>
+                                    <option value="04">April</option>
+                                    <option value="05">Mei</option>
+                                    <option value="06">Jun</option>
+                                    <option value="07">Julai</option>
+                                    <option value="08">Ogos</option>
+                                    <option value="09">September</option>
+                                    <option value="10">Oktober</option>
+                                    <option value="11">November</option>
+                                    <option value="12">Disember</option>
+                                </select>
+                            </div>
+
+                            <!-- Filter Mengikut Nama Staf -->
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase text-navy-900 mb-1">Filter Nama Staf</label>
+                                <select id="admin-filter-staff" onchange="renderAdminReportTable()" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-semibold text-navy-900 outline-none">
+                                    <option value="ALL">-- Semua Staf --</option>
+                                </select>
+                            </div>
+
+                            <!-- Filter Mengikut Jenis Cuti / Alasan -->
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase text-navy-900 mb-1">Filter Jenis Cuti / Alasan</label>
+                                <select id="admin-filter-reason" onchange="renderAdminReportTable()" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-semibold text-navy-900 outline-none">
+                                    <option value="ALL">-- Semua Jenis Cuti & Urusan --</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kawasan Pratonton & Cetakan PDF -->
+                    <div id="pdf-print-area" class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 space-y-4">
+                        <div class="flex items-center justify-between border-b-2 border-navy-900 pb-3">
+                            <div>
+                                <h4 id="pdf-report-heading" class="font-display font-extrabold text-sm sm:text-base text-navy-900 uppercase">LAPORAN REKOD KEBERADAAN SEKTOR PEMBANGUNAN INSTRUKSIONAL</h4>
+                                <p id="pdf-report-subheading" class="text-xs text-slate-600 mt-0.5">Bahagian Pendidikan Khas • Kementerian Pendidikan Malaysia</p>
+                            </div>
+                            <div class="text-right text-xs">
+                                <span class="font-bold text-navy-900 block" id="pdf-total-count">Jumlah Rekod: 0</span>
+                                <span class="text-slate-500 text-[11px]" id="pdf-generated-date"></span>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-xs">
+                                <thead>
+                                    <tr class="bg-navy-900 text-white">
+                                        <th class="p-2.5 w-10 text-center">Bil.</th>
+                                        <th class="p-2.5 w-28">Tarikh</th>
+                                        <th class="p-2.5">Nama Pegawai / Staf</th>
+                                        <th class="p-2.5">Kategori Utama</th>
+                                        <th class="p-2.5">Jenis Cuti / Alasan</th>
+                                        <th class="p-2.5">Masa & Catatan</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-report-tbody" class="divide-y divide-slate-200">
+                                    <!-- Dijana JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: PENGURUSAN PENGUMUMAN (TEKS / GAMBAR / TEKS & GAMBAR) -->
+                <div id="admin-tab-announcement" class="hidden space-y-5">
+                    <div class="bg-amber-50/60 border border-amber-200 rounded-2xl p-4 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold text-sm text-navy-900">Tetapan Pengumuman Sektor</h3>
+                                <p class="text-xs text-slate-600">Pengumuman akan dipaparkan secara pop-up semasa aplikasi dibuka serta melekat di atas tarikh.</p>
+                            </div>
+                            <label class="inline-flex items-center gap-2 cursor-pointer bg-white px-3 py-2 rounded-xl border border-slate-200">
+                                <input type="checkbox" id="ann-active-toggle" class="w-4 h-4 accent-navy-900">
+                                <span class="text-xs font-bold text-navy-900">Aktifkan Pengumuman</span>
+                            </label>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-navy-900 mb-1">Mod Paparan Pengumuman</label>
+                                    <select id="ann-mode-select" onchange="toggleAnnouncementFields()" class="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-xl text-xs font-bold text-navy-900 outline-none">
+                                        <option value="BOTH">Teks & Gambar</option>
+                                        <option value="TEXT">Teks Sahaja</option>
+                                        <option value="IMAGE">Gambar Sahaja</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-navy-900 mb-1">Tajuk Pengumuman</label>
+                                    <input type="text" id="ann-title-input" placeholder="Contoh: Mesyuarat Pengurusan Sektor Bil. 4" class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-sm font-semibold text-navy-900 outline-none">
+                                </div>
+
+                                <div id="ann-text-field-wrap">
+                                    <label class="block text-xs font-bold text-navy-900 mb-1">Kandungan Teks Pengumuman</label>
+                                    <textarea id="ann-text-input" rows="4" placeholder="Tulis makluman atau arahan kepada semua pegawai & AKP..." class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-sm text-navy-900 outline-none"></textarea>
+                                </div>
+                            </div>
+
+                            <div id="ann-image-field-wrap" class="space-y-3">
+                                <label class="block text-xs font-bold text-navy-900 mb-1">Muat Naik Gambar / Poster (atau Tampal Pautan URL)</label>
+                                <input type="file" id="ann-image-file" accept="image/*" onchange="handleAnnouncementImageUpload(event)" class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-navy-900 file:text-white hover:file:bg-navy-800 bg-white border border-slate-300 rounded-xl p-1.5">
+
+                                <input type="url" id="ann-image-url" oninput="previewAnnouncementImage()" placeholder="Atau masukkan pautan URL gambar (https://...)" class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs text-navy-900 outline-none">
+
+                                <div class="bg-white border border-slate-200 rounded-xl p-3 text-center min-h-[140px] flex flex-col items-center justify-center">
+                                    <img id="ann-preview-img" src="" alt="Pratonton Gambar" class="hidden max-h-40 rounded-lg object-contain mx-auto">
+                                    <span id="ann-preview-placeholder" class="text-xs text-slate-400">Tiada gambar dipilih</span>
+                                    <button type="button" id="btn-clear-ann-img" onclick="clearAnnouncementImage()" class="hidden mt-2 text-[11px] text-red-600 font-bold hover:underline cursor-pointer">Padam Gambar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end pt-2">
+                            <button type="button" onclick="saveAnnouncementSettings()" class="px-5 py-2.5 bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold rounded-xl shadow transition cursor-pointer">
+                                <i class="fa-solid fa-bullhorn mr-1.5"></i> Simpan & Siarkan Pengumuman
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: URUS STAF (PERPINDAHAN MASUK / KELUAR) -->
+                <div id="admin-tab-staff" class="hidden space-y-5">
+                    <div class="bg-navy-50/70 border border-navy-100 rounded-2xl p-4">
+                        <h3 class="font-bold text-sm text-navy-900 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-user-plus text-navy-700"></i> Tambah Staf Baharu (Perpindahan Masuk)
+                        </h3>
+                        <form onsubmit="addNewStaff(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                            <div class="sm:col-span-5">
+                                <input type="text" id="new-staff-name" required placeholder="Nama Penuh (cth: ENCIK ALI BIN ABU)" class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold uppercase outline-none focus:ring-2 focus:ring-navy-900">
+                            </div>
+                            <div class="sm:col-span-4">
+                                <select id="new-staff-position" onchange="autoSelectCategoryFromPosition()" class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold outline-none focus:ring-2 focus:ring-navy-900">
+                                    <option value="TIMBALAN PENGARAH">TIMBALAN PENGARAH</option>
+                                    <option value="KETUA PENOLONG PENGARAH">KETUA PENOLONG PENGARAH</option>
+                                    <option value="PENOLONG PENGARAH" selected>PENOLONG PENGARAH</option>
+                                    <option value="ANGGOTA KUMPULAN PELAKSANA">ANGGOTA KUMPULAN PELAKSANA</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-3 flex gap-2">
+                                <select id="new-staff-category" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-bold outline-none">
+                                    <option value="PEGAWAI">PEGAWAI</option>
+                                    <option value="AKP">AKP</option>
+                                </select>
+                                <button type="submit" class="px-4 py-2 bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold rounded-xl shadow flex-shrink-0 cursor-pointer">
+                                    Tambah
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-sm text-navy-900">Senarai Staf Semasa (<span id="admin-staff-count">0</span> Orang)</h3>
+                            <span class="text-xs text-slate-500">Klik ikon tong sampah untuk rekod perpindahan keluar</span>
+                        </div>
+                        <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                            <div id="admin-staff-list" class="divide-y divide-slate-200 max-h-80 overflow-y-auto">
+                                <!-- Dijana JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: URUS TAB MENU (4 SEBARIS, TAMBAH TAB BAHARU) -->
+                <div id="admin-tab-tabs" class="hidden space-y-5">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3">
+                        <h3 class="font-bold text-sm text-navy-900">Tambah Tab Menu Baharu</h3>
+                        <p class="text-xs text-slate-500">Tab dipaparkan 4 tab dalam 1 baris secara sejajar tengah. Tab baharu akan diletakkan pada baris berikutnya.</p>
+                        <form onsubmit="addNewMenuTab(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                            <div class="sm:col-span-5">
+                                <input type="text" id="new-tab-label" required placeholder="Nama Tab (cth: CUTI REHAT / KURSUS)" class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-bold uppercase outline-none">
+                            </div>
+                            <div class="sm:col-span-5">
+                                <select id="new-tab-filter" class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-xs font-semibold outline-none">
+                                    <option value="MAIN:TIADA DI PEJABAT">Semua Kategori: Tiada Di Pejabat</option>
+                                    <option value="MAIN:TIDAK HADIR">Semua Kategori: Tidak Hadir (Cuti)</option>
+                                    <option value="KEYWORD:MESYUARAT">Alasan Mengandungi: Mesyuarat</option>
+                                    <option value="KEYWORD:CUTI REHAT">Alasan Mengandungi: Cuti Rehat</option>
+                                    <option value="KEYWORD:CUTI SAKIT">Alasan Mengandungi: Cuti Sakit</option>
+                                    <option value="KEYWORD:KURSUS">Alasan Mengandungi: Kursus / Latihan</option>
+                                    <option value="KEYWORD:CUTI TANPA REKOD">Alasan Mengandungi: Cuti Tanpa Rekod (CTR)</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <button type="submit" class="w-full px-4 py-2 bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold rounded-xl shadow cursor-pointer">
+                                    + Tambah Tab
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-sm text-navy-900 mb-2">Susunan Tab Menu Aktif</h3>
+                        <div id="admin-tabs-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <!-- Dijana JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: TETAPAN SISTEM & RESET KESELURUHAN DENGAN PENGESAHAN BERGANDA -->
+                <div id="admin-tab-system" class="hidden space-y-6">
+                    <form onsubmit="saveSystemSettings(event)" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-4">
+                        <h3 class="font-bold text-sm text-navy-900">Identiti & Keselamatan Aplikasi</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-navy-900 mb-1">Tajuk Utama Aplikasi</label>
+                                <input type="text" id="setting-app-title" required class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-sm font-semibold">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-navy-900 mb-1">Sub-Tajuk / Nama Bahagian</label>
+                                <input type="text" id="setting-app-subtitle" required class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-sm">
+                            </div>
+                        </div>
+
+                        <div class="max-w-xs">
+                            <label class="block text-xs font-bold text-navy-900 mb-1">Kata Laluan Pentadbir (Admin)</label>
+                            <input type="text" id="setting-admin-pin" required class="w-full px-3.5 py-2 bg-white border border-slate-300 rounded-xl text-sm font-bold">
+                        </div>
+
+                        <div class="pt-1">
+                            <button type="submit" class="px-5 py-2.5 bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold rounded-xl shadow cursor-pointer">
+                                Simpan Tetapan Sistem
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Zon Reset Keseluruhan Rekod Dengan Pengesahan Berganda -->
+                    <div class="bg-red-50/80 border border-red-200 rounded-2xl p-5 space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm text-red-900">Tetapan Semula (Reset) Rekod Keseluruhan Sistem</h3>
+                                <p class="text-xs text-red-800 mt-1 leading-relaxed">
+                                    Fungsi ini disediakan untuk membersihkan keseluruhan rekod keberadaan yang tersimpan dalam pangkalan data bagi tujuan permulaan sesi baharu. Sila pastikan laporan tahunan telah dimuat turun terlebih dahulu sebelum meneruskan proses ini.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button type="button" onclick="openDoubleConfirmResetModal()" class="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl shadow cursor-pointer">
+                                <i class="fa-solid fa-rotate-left mr-1.5"></i> Tetapkan Semula Semua Rekod
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 4: PENGESAHAN BERGANDA (DOUBLE CONFIRM) RESET REKOD ==================== -->
+    <div id="double-confirm-reset-modal" class="hidden fixed inset-0 z-[60] bg-navy-950/80 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-red-200">
+            <div class="bg-red-700 text-white px-5 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-shield-exclamation text-amber-300 text-lg"></i>
+                    <h2 class="font-display font-bold text-base">Pengesahan Keselamatan Tindakan</h2>
+                </div>
+                <button type="button" onclick="closeModal('double-confirm-reset-modal')" class="w-8 h-8 rounded-xl bg-red-800 hover:bg-red-900 text-white flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-5 space-y-4">
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-xs text-slate-700 leading-relaxed space-y-2">
+                    <p class="font-bold text-navy-900">Perhatian Pentadbir Sektor,</p>
+                    <p>Anda sedang memohon untuk melaksanakan <strong>Tetapan Semula Keseluruhan Rekod</strong> dalam sistem. Tindakan ini akan memadamkan semua rekod ketidakhadiran dan urusan luar yang sedia ada secara kekal dan tidak boleh dikembalikan semula.</p>
+                    <p>Sebagai langkah keselamatan berganda, sila sahkan tindakan ini dengan memasukkan kata laluan pentadbir dan menandakan kotak pengesahan di bawah.</p>
+                </div>
+
+                <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                    <input type="checkbox" id="reset-double-confirm-check" class="mt-0.5 w-4 h-4 accent-red-600">
+                    <span class="text-xs font-semibold text-navy-900">Saya memahami sepenuhnya kesan tindakan ini dan mengesahkan bahawa semua rekod sedia ada boleh dipadamkan.</span>
+                </label>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-navy-900 mb-1">Masukkan Kata Laluan Admin untuk Pengesahan</label>
+                    <input type="password" id="reset-confirm-password" placeholder="Kata laluan pentadbir..." class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm font-bold text-navy-900 outline-none focus:ring-2 focus:ring-red-600">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+                    <button type="button" onclick="closeModal('double-confirm-reset-modal')" class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 cursor-pointer">Batal</button>
+                    <button type="button" onclick="executeFullSystemReset()" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow cursor-pointer">Sahkan & Padam Semua Rekod</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-[70] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ==================== FIREBASE & LOGIK APLIKASI REAL-TIME ==================== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import {
+            getFirestore, doc, setDoc, getDoc, deleteDoc,
+            collection, onSnapshot, getDocs
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // 1. SENARAI ASAL 21 STAF SEKTOR PEMBANGUNAN INSTRUKSIONAL BPKHAS
+        const INITIAL_STAFF_LIST = [
+            { id: "staf_01", order: 1, name: "PUAN JAMILAH BINTI KADIR", position: "TIMBALAN PENGARAH", category: "PEGAWAI" },
+            { id: "staf_02", order: 2, name: "ENCIK SUKIMAN BIN DAUD", position: "KETUA PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_03", order: 3, name: "ENCIK KHAIRI BIN BAHARI", position: "KETUA PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_04", order: 4, name: "ENCIK HANIZAN BIN CHE MAT", position: "KETUA PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_05", order: 5, name: "PUAN NURULHANIS BINTI NOH", position: "KETUA PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_06", order: 6, name: "PUAN AZLINI BINTI LAMRI", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_07", order: 7, name: "PUAN NUR SOLIHAH BINTI RASHIDI", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_08", order: 8, name: "PUAN NOR ANIKAH BINTI ABD RAHIM", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_09", order: 9, name: "PUAN SITI QATRUNNADA HANIS BINTI SHARIFF", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_10", order: 10, name: "PUAN KOK PUI WEE", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_11", order: 11, name: "PUAN INTAN ROHANI BINTI YUSUF @ YUSOF", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_12", order: 12, name: "PUAN NOR ASILAH BINTI ABDILLAH @ MOHAMAD", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_13", order: 13, name: "CIK NUR HAYATI BINTI ABU JAMIL", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_14", order: 14, name: "PUAN NUR IDAYU BINTI ROSNI", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_15", order: 15, name: "ENCIK AHMAD SHAHRIR BIN SAID", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_16", order: 16, name: "PUAN DAYANG ZETTY ZURAIDA BINTI ABANG SAHREL", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_17", order: 17, name: "PUAN NURULSHIMA BINTI MOHD MOHTAR", position: "PENOLONG PENGARAH", category: "PEGAWAI" },
+            { id: "staf_18", order: 18, name: "ENCIK MOHD IZZAIRY BIN HAJI ISMAIL", position: "ANGGOTA KUMPULAN PELAKSANA", category: "AKP" },
+            { id: "staf_19", order: 19, name: "PUAN HANISAH BINTI LATIP", position: "ANGGOTA KUMPULAN PELAKSANA", category: "AKP" },
+            { id: "staf_20", order: 20, name: "PUAN SITI NABILAH BINTI AHMAD", position: "ANGGOTA KUMPULAN PELAKSANA", category: "AKP" },
+            { id: "staf_21", order: 21, name: "PUAN NORHANIZA BINTI MUHAMMAD NOOR", position: "ANGGOTA KUMPULAN PELAKSANA", category: "AKP" }
+        ];
+
+        // 2. STRUKTUR ALASAN TERPERINCI MENGIKUT KETETAPAN SEKTOR
+        const REASON_GROUPS = {
+            "TIADA DI PEJABAT": [
+                {
+                    group: "Tiada Di Pejabat",
+                    items: [
+                        "Mesyuarat"
+                    ]
+                }
+            ],
+            "TIDAK HADIR": [
+                {
+                    group: "Cuti Kerana Perkhidmatan & Lain-Lain",
+                    items: [
+                        "Cuti Rehat",
+                        "Cuti Penggal",
+                        "Cuti Rehat Lebihan GCR",
+                        "Cuti Sambilan",
+                        "Cuti Rehat Selepas Berkursus Lebih 12 Bulan",
+                        "Cuti Gantian",
+                        "Cuti Separuh Gaji",
+                        "Cuti Tanpa Gaji"
+                    ]
+                },
+                {
+                    group: "Cuti Kerana Perubatan & Kesihatan",
+                    items: [
+                        "Cuti Sakit (Awam, Swasta, dan lanjutan/khas)",
+                        "Cuti Kecederaan serta Cuti Tibi, Kusta, dan Barah",
+                        "Cuti Kerantina / Kuarantin dan Cuti Menjaga Anak Yang Dikuarantin"
+                    ]
+                },
+                {
+                    group: "Cuti Bersalin & Keagamaan / Latihan",
+                    items: [
+                        "Cuti Bersalin (Bergaji, Separuh Gaji, atau Tanpa Gaji)",
+                        "Cuti Haji, Cuti Umrah, serta Cuti Keagamaan",
+                        "Cuti Latihan Pasukan Sukarela, Kursus, dan Cuti Tanpa Rekod (CTR)"
+                    ]
+                }
+            ]
+        };
+
+        // 3. TAB MENU LALAI (5 TAB SEBARIS GRID 5x1: PAPARAN UTAMA TIADA DI PEJABAT & PAPARAN KE-2 SEMUA STAF)
+        // 3. TAB MENU LALAI (4 TAB UTAMA: 1. TIADA DI PEJABAT, 2. CUTI, 3. HADIR, 4. SEMUA STAF)
+        const DEFAULT_TABS = [
+            { id: "tab_out_office", label: "TIADA DI PEJABAT", filterType: "MAIN:TIADA DI PEJABAT", color: "blue", icon: "fa-briefcase", locked: true },
+            { id: "tab_leave", label: "CUTI", filterType: "MAIN:TIDAK HADIR", color: "amber", icon: "fa-umbrella-beach", locked: true },
+            { id: "tab_present", label: "HADIR", filterType: "PRESENT", color: "emerald", icon: "fa-building-user", locked: true },
+            { id: "tab_all", label: "SEMUA STAF", filterType: "ALL", color: "navy", icon: "fa-users", locked: true }
+        ];
+
+        const DEFAULT_SETTINGS = {
+            appTitle: "KEBERADAAN SEKTOR PEMBANGUNAN INSTRUKSIONAL",
+            appSubtitle: "Bahagian Pendidikan Khas • Rekod Keberadaan SPI",
+            adminPin: "Admin@SPI"
+        };
+
+        const DEFAULT_ANNOUNCEMENT = {
+            active: false,
+            mode: "BOTH",
+            title: "Selamat Datang ke Sistem Keberadaan SPI",
+            text: "Pegawai dan AKP yang berada di pejabat tidak perlu mengisi borang. Hanya rekodkan sekiranya tiada di pejabat atau tidak hadir.",
+            imageUrl: ""
+        };
+
+        // 4. STATE APLIKASI
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+        let isCloudMode = false;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'spi-bpkhas-keberadaan';
+
+        let staffList = [...INITIAL_STAFF_LIST];
+        let menuTabs = [...DEFAULT_TABS];
+        let appSettings = { ...DEFAULT_SETTINGS };
+        let announcementData = { ...DEFAULT_ANNOUNCEMENT };
+        let dailyAttendance = {};
+        let yearlyRecordsCache = [];
+        let selectedDate = getTodayISO();
+        let activeTabId = "tab_out_office";
+        let unsubscribeAttendance = null;
+        let hasShownInitialPopup = false;
+
+        function getTodayISO() {
+            const now = new Date();
+            const offset = now.getTimezoneOffset() * 60000;
+            return new Date(now.getTime() - offset).toISOString().split('T')[0];
+        }
+
+        function formatMalayDate(isoDate) {
+            if (!isoDate) return "";
+            const [y, m, d] = isoDate.split('-').map(Number);
+            const dateObj = new Date(y, m - 1, d);
+            const days = ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"];
+            const months = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"];
+            return `${days[dateObj.getDay()]}, ${d} ${months[m - 1]} ${y}`;
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bg = type === 'error' ? 'bg-red-600' : (type === 'info' ? 'bg-navy-800' : 'bg-emerald-600');
+            const icon = type === 'error' ? 'fa-circle-exclamation' : (type === 'info' ? 'fa-circle-info' : 'fa-circle-check');
+
+            toast.className = `${bg} text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2.5 text-xs sm:text-sm font-semibold pointer-events-auto transition-all duration-300 transform translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i><span>${message}</span>`;
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3200);
+        }
+
+        // 5. INISIALISASI FIREBASE & SINKRONISASI MASA NYATA
+        async function initApp() {
+            document.getElementById('selected-date').value = selectedDate;
+            document.getElementById('display-date-full').textContent = formatMalayDate(selectedDate);
+            populateAdminFilterOptions();
+            renderDynamicTabs();
+            renderAllViews();
+
+            try {
+                if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const app = initializeApp(firebaseConfig);
+                    auth = getAuth(app);
+                    db = getFirestore(app);
+
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        const cred = await signInWithCustomToken(auth, __initial_auth_token);
+                        currentUser = cred.user;
+                    } else {
+                        const cred = await signInAnonymously(auth);
+                        currentUser = cred.user;
+                    }
+
+                    if (currentUser) {
+                        isCloudMode = true;
+                        document.getElementById('sync-dot').className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+                        document.getElementById('sync-label').textContent = "Tersambung (Semua Peranti)";
+                        await setupRealtimeListeners();
+                    }
+                } else {
+                    activateLocalPreviewFallback();
+                }
+            } catch (err) {
+                console.warn("Mod pratonton tempatan aktif:", err);
+                activateLocalPreviewFallback();
+            }
+        }
+
+        function activateLocalPreviewFallback() {
+            isCloudMode = false;
+            document.getElementById('sync-dot').className = "w-2 h-2 rounded-full bg-amber-400";
+            document.getElementById('sync-label').textContent = "Mod Sesi Semasa";
+            renderAllViews();
+        }
+
+        async function setupRealtimeListeners() {
+            if (!db || !currentUser) return;
+
+            const configCol = collection(db, 'artifacts', appId, 'public', 'data', 'spi_config');
+
+            onSnapshot(configCol, async (snapshot) => {
+                let hasStaffDoc = false;
+                let hasSettingsDoc = false;
+                let hasTabsDoc = false;
+
+                snapshot.forEach((docSnap) => {
+                    const id = docSnap.id;
+                    const data = docSnap.data();
+
+                    if (id === 'staff_directory' && Array.isArray(data.items)) {
+                        hasStaffDoc = true;
+                        staffList = data.items.sort((a, b) => (a.order || 999) - (b.order || 999));
+                    } else if (id === 'app_settings') {
+                        hasSettingsDoc = true;
+                        appSettings = { ...DEFAULT_SETTINGS, ...data };
+                    } else if (id === 'menu_tabs' && Array.isArray(data.items)) {
+                        hasTabsDoc = true;
+                        const customTabs = data.items.filter(t => !t.locked);
+                        menuTabs = [...DEFAULT_TABS, ...customTabs];
+                    } else if (id === 'announcement') {
+                        announcementData = { ...DEFAULT_ANNOUNCEMENT, ...data };
+                    }
+                });
+
+                if (!hasStaffDoc) {
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'staff_directory'), { items: INITIAL_STAFF_LIST });
+                }
+                if (!hasSettingsDoc) {
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'app_settings'), DEFAULT_SETTINGS);
+                }
+                if (!hasTabsDoc) {
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'menu_tabs'), { items: DEFAULT_TABS });
+                }
+
+                applySettingsUI();
+                applyAnnouncementUI();
+                populateAdminFilterOptions();
+                renderDynamicTabs();
+                renderAllViews();
+            }, (error) => {
+                console.error("Ralat konfigurasi masa nyata:", error);
+            });
+
+            subscribeToDateAttendance(selectedDate);
+        }
+
+        function subscribeToDateAttendance(dateStr) {
+            if (!isCloudMode || !db || !currentUser) {
+                renderDynamicTabs();
+                renderAllViews();
+                return;
+            }
+
+            if (unsubscribeAttendance) {
+                unsubscribeAttendance();
+            }
+
+            const recordsCol = collection(db, 'artifacts', appId, 'public', 'data', 'spi_records');
+            unsubscribeAttendance = onSnapshot(recordsCol, (snapshot) => {
+                const map = {};
+                const allYearRecs = [];
+                const selectedYear = document.getElementById('admin-filter-year')?.value || dateStr.substring(0, 4);
+
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    if (data.date === dateStr) {
+                        map[data.staffId] = { docId: docSnap.id, ...data };
+                    }
+                    if ((data.year || (data.date && data.date.substring(0, 4))) === selectedYear) {
+                        allYearRecs.push({ docId: docSnap.id, ...data });
+                    }
+                });
+
+                dailyAttendance = map;
+                yearlyRecordsCache = allYearRecs;
+                renderDynamicTabs();
+                renderAllViews();
+                if (!document.getElementById('admin-panel-modal').classList.contains('hidden')) {
+                    renderAdminReportTable();
+                }
+            }, (error) => {
+                console.error("Ralat bacaan rekod kehadiran:", error);
+            });
+        }
+
+        // 6. PAPARAN PENGUMUMAN (POP-UP & MELEKAT DI ATAS TARIKH)
+        function applyAnnouncementUI() {
+            const bar = document.getElementById('sticky-announcement-bar');
+            const thumb = document.getElementById('sticky-ann-thumb');
+            const titleEl = document.getElementById('sticky-ann-title');
+            const textEl = document.getElementById('sticky-ann-text');
+
+            if (!announcementData || !announcementData.active) {
+                bar.classList.add('hidden');
+                return;
+            }
+
+            bar.classList.remove('hidden');
+            titleEl.textContent = announcementData.title || "PENGUMUMAN SEKTOR";
+
+            const showText = announcementData.mode === 'TEXT' || announcementData.mode === 'BOTH';
+            const showImg = (announcementData.mode === 'IMAGE' || announcementData.mode === 'BOTH') && announcementData.imageUrl;
+
+            textEl.textContent = showText ? (announcementData.text || "") : "Klik untuk melihat lampiran gambar pengumuman.";
+            if (showImg) {
+                thumb.src = announcementData.imageUrl;
+                thumb.classList.remove('hidden');
+            } else {
+                thumb.classList.add('hidden');
+            }
+
+            if (!hasShownInitialPopup) {
+                hasShownInitialPopup = true;
+                openAnnouncementPopup(false);
+            }
+        }
+
+        window.openAnnouncementPopup = (manual = true) => {
+            if (!announcementData || (!announcementData.active && !manual)) return;
+
+            document.getElementById('popup-ann-title').textContent = announcementData.title || "PENGUMUMAN";
+            const imgWrap = document.getElementById('popup-ann-img-wrap');
+            const imgEl = document.getElementById('popup-ann-img');
+            const bodyEl = document.getElementById('popup-ann-body');
+
+            const showText = announcementData.mode === 'TEXT' || announcementData.mode === 'BOTH';
+            const showImg = (announcementData.mode === 'IMAGE' || announcementData.mode === 'BOTH') && announcementData.imageUrl;
+
+            if (showImg) {
+                imgEl.src = announcementData.imageUrl;
+                imgWrap.classList.remove('hidden');
+            } else {
+                imgWrap.classList.add('hidden');
+            }
+
+            if (showText && announcementData.text) {
+                bodyEl.textContent = announcementData.text;
+                bodyEl.classList.remove('hidden');
+            } else {
+                bodyEl.classList.add('hidden');
+            }
+
+            document.getElementById('announcement-popup-modal').classList.remove('hidden');
+        };
+
+        // 7. KAWALAN TARIKH
+        window.onDateChange = () => {
+            selectedDate = document.getElementById('selected-date').value || getTodayISO();
+            document.getElementById('display-date-full').textContent = formatMalayDate(selectedDate);
+            if (!isCloudMode) dailyAttendance = {};
+            subscribeToDateAttendance(selectedDate);
+        };
+
+        window.changeDate = (delta) => {
+            const [y, m, d] = selectedDate.split('-').map(Number);
+            const dt = new Date(y, m - 1, d + delta);
+            const offset = dt.getTimezoneOffset() * 60000;
+            selectedDate = new Date(dt.getTime() - offset).toISOString().split('T')[0];
+            document.getElementById('selected-date').value = selectedDate;
+            onDateChange();
+        };
+
+        window.setToday = () => {
+            selectedDate = getTodayISO();
+            document.getElementById('selected-date').value = selectedDate;
+            onDateChange();
+        };
+
+        // 8. TAB MENU DINAMIK (1 BARIS GRID 5x1, SEJAJAR TENGAH & PENAPISAN AUTOMATIK)
+        window.selectMenuTab = (tabId) => {
+            activeTabId = tabId;
+            renderDynamicTabs();
+            renderAllViews();
+        };
+
+        window.resetMainFilters = () => {
+            document.getElementById('search-input').value = '';
+            document.getElementById('filter-category').value = 'ALL';
+            activeTabId = menuTabs[0] ? menuTabs[0].id : 'tab_out_office';
+            renderDynamicTabs();
+            renderAllViews();
+        };
+
+        function doesStaffMatchTab(staf, rec, tab) {
+            if (!tab || tab.filterType === 'ALL') return true;
+            if (tab.filterType === 'PRESENT') return !rec;
+            if (tab.filterType === 'NOT_PRESENT') return !!rec;
+
+            if (!rec) return false;
+
+            if (tab.filterType.startsWith('MAIN:')) {
+                const targetMain = tab.filterType.replace('MAIN:', '');
+                return rec.mainCategory === targetMain;
+            }
+            if (tab.filterType.startsWith('KEYWORD:')) {
+                const kw = tab.filterType.replace('KEYWORD:', '').toLowerCase();
+                const combined = `${rec.mainCategory || ''} ${rec.reasonDetail || ''} ${rec.notes || ''}`.toLowerCase();
+                return combined.includes(kw);
+            }
+            return true;
+        }
+
+        function renderDynamicTabs() {
+            const container = document.getElementById('dynamic-tabs-container');
+            container.innerHTML = '';
+
+            menuTabs.forEach((tab) => {
+                const count = staffList.filter(s => doesStaffMatchTab(s, dailyAttendance[s.id], tab)).length;
+                const isActive = activeTabId === tab.id;
+
+                let borderClass = "border-slate-200 bg-white text-navy-900 hover:bg-slate-50";
+                let badgeBg = "bg-slate-100 text-navy-900";
+
+                if (isActive) {
+                    borderClass = "border-navy-900 bg-navy-900 text-white shadow-md ring-2 ring-navy-900/20";
+                    badgeBg = "bg-white text-navy-900";
+                } else if (tab.filterType === 'PRESENT') {
+                    borderClass = "border-emerald-200 bg-white text-emerald-900 hover:bg-emerald-50/50";
+                    badgeBg = "bg-emerald-100 text-emerald-800";
+                } else if (tab.filterType === 'NOT_PRESENT' || tab.filterType === 'MAIN:TIADA DI PEJABAT') {
+                    borderClass = "border-blue-200 bg-white text-blue-900 hover:bg-blue-50/50";
+                    badgeBg = "bg-blue-100 text-blue-800";
+                } else if (tab.filterType === 'MAIN:TIDAK HADIR') {
+                    borderClass = "border-amber-200 bg-white text-amber-900 hover:bg-amber-50/50";
+                    badgeBg = "bg-amber-100 text-amber-800";
+                }
+
+                const btn = document.createElement('button');
+                btn.type = "button";
+                btn.onclick = () => selectMenuTab(tab.id);
+                btn.className = `w-full px-3 py-2.5 rounded-xl border transition-all flex items-center justify-between gap-2 text-left cursor-pointer ${borderClass}`;
+                btn.innerHTML = `
+                    <div class="min-w-0">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid ${tab.icon || 'fa-tag'} text-[11px] opacity-80 flex-shrink-0"></i>
+                            <span class="text-[11px] font-extrabold uppercase tracking-tight truncate">${tab.label}</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-extrabold px-2 py-0.5 rounded-lg flex-shrink-0 ${badgeBg}">
+                        ${count}
+                    </span>
+                `;
+                container.appendChild(btn);
+            });
+        }
+
+        window.renderAllViews = () => {
+            const searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+            const catFilter = document.getElementById('filter-category').value;
+            const currentTab = menuTabs.find(t => t.id === activeTabId) || menuTabs[0];
+
+            const filteredStaff = staffList.filter(staf => {
+                const rec = dailyAttendance[staf.id];
+
+                if (!doesStaffMatchTab(staf, rec, currentTab)) return false;
+                if (catFilter !== 'ALL' && staf.category !== catFilter) return false;
+
+                if (searchQuery) {
+                    const matchName = staf.name.toLowerCase().includes(searchQuery);
+                    const matchPos = staf.position.toLowerCase().includes(searchQuery);
+                    const matchReason = rec && (
+                        (rec.reasonDetail && rec.reasonDetail.toLowerCase().includes(searchQuery)) ||
+                        (rec.notes && rec.notes.toLowerCase().includes(searchQuery))
+                    );
+                    if (!matchName && !matchPos && !matchReason) return false;
+                }
+                return true;
+            });
+
+            const desktopBody = document.getElementById('desktop-table-body');
+            const mobileView = document.getElementById('mobile-card-view');
+            const emptyState = document.getElementById('empty-state');
+
+            desktopBody.innerHTML = '';
+            mobileView.innerHTML = '';
+
+            if (filteredStaff.length === 0) {
+                emptyState.classList.remove('hidden');
+                if (currentTab && (currentTab.filterType === 'NOT_PRESENT' || currentTab.filterType === 'MAIN:TIADA DI PEJABAT') && !searchQuery) {
+                    document.getElementById('empty-state-title').textContent = "Semua staf berada di pejabat hari ini";
+                    document.getElementById('empty-state-desc').textContent = "Tiada rekod urusan luar pejabat diisi bagi tarikh ini.";
+                } else {
+                    document.getElementById('empty-state-title').textContent = "Tiada rekod ditemui";
+                    document.getElementById('empty-state-desc').textContent = "Tiada nama atau rekod sepadan dengan pilihan tapisan semasa.";
+                }
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filteredStaff.forEach((staf, index) => {
+                const rec = dailyAttendance[staf.id];
+                const badgeHTML = getStatusBadgeHTML(rec);
+                const detailsHTML = getDetailsHTML(rec, staf.id);
+                const catBadge = staf.category === 'PEGAWAI'
+                    ? `<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-navy-100 text-navy-900">PEGAWAI</span>`
+                    : `<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-200 text-slate-700">AKP</span>`;
+
+                // 1. Baris Desktop (Tanpa kolum TINDAKAN)
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-navy-50/50 transition group";
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 text-center font-bold text-slate-500">${index + 1}</td>
+                    <td class="py-3.5 px-4">
+                        <div class="font-bold text-navy-900">${staf.name}</div>
+                        <div class="text-xs text-slate-500 font-medium mt-0.5">${staf.position}</div>
+                    </td>
+                    <td class="py-3.5 px-4">${catBadge}</td>
+                    <td class="py-3.5 px-4">${badgeHTML}</td>
+                    <td class="py-3.5 px-4 text-xs text-slate-600">${detailsHTML}</td>
+                `;
+                desktopBody.appendChild(tr);
+
+                // 2. Kad Smartphone (Butang kemaskini hanya muncul di bahagian rekod yang telah diisi)
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3";
+                card.innerHTML = `
+                    <div class="flex justify-between items-start gap-2">
+                        <div class="flex items-start gap-2.5 min-w-0">
+                            <span class="w-6 h-6 rounded-lg bg-navy-900 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                ${index + 1}
+                            </span>
+                            <div class="min-w-0">
+                                <h4 class="font-bold text-sm text-navy-900 leading-snug">${staf.name}</h4>
+                                <p class="text-[11px] font-medium text-slate-500 mt-0.5">${staf.position}</p>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0">${catBadge}</div>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                        <div>${badgeHTML}</div>
+                    </div>
+
+                    ${rec ? `
+                        <div class="bg-slate-50 rounded-xl p-2.5 text-xs text-slate-600 border border-slate-100">
+                            ${detailsHTML}
+                        </div>
+                    ` : ''}
+                `;
+                mobileView.appendChild(card);
+            });
+        };
+
+        function getStatusBadgeHTML(rec) {
+            if (!rec) {
+                return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> HADIR DI PEJABAT
+                        </span>`;
+            }
+            if (rec.mainCategory === "TIADA DI PEJABAT") {
+                return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> TIADA DI PEJABAT
+                        </span>`;
+            }
+            return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> TIDAK HADIR (CUTI)
+                    </span>`;
+        }
+
+        function getDetailsHTML(rec, staffId) {
+            if (!rec) {
+                return ``;
+            }
+            let parts = [];
+            if (rec.reasonDetail) {
+                parts.push(`<div class="font-bold text-navy-900">${escapeHTML(rec.reasonDetail)}</div>`);
+            }
+            if (rec.mainCategory === "TIADA DI PEJABAT") {
+                if (rec.eventTitle) {
+                    parts.push(`<div class="text-slate-700 font-semibold mt-0.5"><i class="fa-solid fa-chalkboard-user text-blue-600 mr-1"></i>${escapeHTML(rec.eventTitle)}</div>`);
+                }
+                if (rec.location) {
+                    parts.push(`<div class="text-slate-600 mt-0.5"><i class="fa-solid fa-location-dot text-red-500 mr-1"></i>${escapeHTML(rec.location)}</div>`);
+                }
+                if (rec.notes) {
+                    parts.push(`<div class="text-slate-500 italic mt-0.5">${escapeHTML(rec.notes)}</div>`);
+                }
+            } else if (rec.notes && !rec.eventTitle && !rec.location) {
+                parts.push(`<div class="text-slate-600 mt-0.5">${escapeHTML(rec.notes)}</div>`);
+            }
+            if (rec.timeStart || rec.timeEnd) {
+                const timeStr = `${rec.timeStart || ''} ${rec.timeEnd ? '- ' + rec.timeEnd : ''}`.trim();
+                parts.push(`<span class="inline-block bg-slate-200/70 text-slate-700 px-1.5 py-0.5 rounded text-[11px] font-semibold mt-1"><i class="fa-regular fa-clock mr-1"></i>${timeStr}</span>`);
+            }
+
+            return `
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0 flex-grow">${parts.join('')}</div>
+                    <button type="button" onclick="openRecordModal('${staffId}')" class="flex-shrink-0 inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-[11px] px-2.5 py-1 rounded-lg transition cursor-pointer" title="Perbetulkan kesilapan rekod ini">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>Kemaskini</span>
+                    </button>
+                </div>
+            `;
+        }
+
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // 9. LOGIK BORANG REKOD KEBERADAAN
+        window.toggleMultiDayDate = () => {
+            const isMulti = document.getElementById('form-multi-day').checked;
+            const grid = document.getElementById('date-inputs-grid');
+            const endWrap = document.getElementById('form-date-end-wrap');
+            const subStart = document.getElementById('sublabel-date-start');
+            const endInput = document.getElementById('form-date-end');
+            const startVal = document.getElementById('form-date').value;
+
+            if (isMulti) {
+                grid.className = "grid grid-cols-1 sm:grid-cols-2 gap-3";
+                endWrap.classList.remove('hidden');
+                subStart.classList.remove('hidden');
+                endInput.required = true;
+                endInput.min = startVal;
+                if (!endInput.value || endInput.value < startVal) {
+                    endInput.value = startVal;
+                }
+            } else {
+                grid.className = "grid grid-cols-1 gap-3";
+                endWrap.classList.add('hidden');
+                subStart.classList.add('hidden');
+                endInput.required = false;
+            }
+        };
+
+        window.syncEndDateMin = () => {
+            const startVal = document.getElementById('form-date').value;
+            const endInput = document.getElementById('form-date-end');
+            if (endInput) {
+                endInput.min = startVal;
+                if (endInput.value && endInput.value < startVal) {
+                    endInput.value = startVal;
+                }
+            }
+        };
+
+        window.updateReasonDropdown = (selectedVal = "") => {
+            const mainCat = document.querySelector('input[name="mainCategory"]:checked')?.value || "TIADA DI PEJABAT";
+            const select = document.getElementById('form-reason-detail');
+            const reasonLabel = document.getElementById('label-reason-detail');
+            const extraWrap = document.getElementById('out-office-extra-fields');
+            const locInput = document.getElementById('form-location');
+            const titleInput = document.getElementById('form-event-title');
+
+            select.innerHTML = '';
+
+            if (mainCat === "TIADA DI PEJABAT") {
+                reasonLabel.innerHTML = 'Perincian Alasan <span class="text-red-500">*</span>';
+                extraWrap.classList.remove('hidden');
+                locInput.required = true;
+                titleInput.required = true;
+            } else {
+                reasonLabel.innerHTML = 'Jenis Cuti <span class="text-red-500">*</span>';
+                extraWrap.classList.add('hidden');
+                locInput.required = false;
+                titleInput.required = false;
+            }
+
+            const groups = REASON_GROUPS[mainCat] || [];
+            groups.forEach(grp => {
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = grp.group;
+                grp.items.forEach(item => {
+                    const opt = document.createElement('option');
+                    opt.value = item;
+                    opt.textContent = item;
+                    if (selectedVal === item) opt.selected = true;
+                    optgroup.appendChild(opt);
+                });
+                select.appendChild(optgroup);
+            });
+        };
+
+        window.openRecordModal = (preselectedStaffId = "") => {
+            const staffSelect = document.getElementById('form-staff-id');
+            staffSelect.innerHTML = '<option value="">-- Sila Pilih Nama --</option>';
+            staffList.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = `${s.name} (${s.position})`;
+                staffSelect.appendChild(opt);
+            });
+
+            document.getElementById('form-multi-day').checked = false;
+            document.getElementById('form-date').value = selectedDate;
+            document.getElementById('form-date-end').value = selectedDate;
+            toggleMultiDayDate();
+
+            document.getElementById('form-time-start').value = '';
+            document.getElementById('form-time-end').value = '';
+            document.getElementById('form-location').value = '';
+            document.getElementById('form-event-title').value = '';
+            document.getElementById('form-notes').value = '';
+            document.querySelector('input[name="mainCategory"][value="TIADA DI PEJABAT"]').checked = true;
+            updateReasonDropdown();
+
+            if (preselectedStaffId) {
+                staffSelect.value = preselectedStaffId;
+                prefillExistingRecord();
+            } else {
+                document.getElementById('btn-delete-record').classList.add('hidden');
+            }
+
+            document.getElementById('record-modal').classList.remove('hidden');
+        };
+
+        window.prefillExistingRecord = () => {
+            const staffId = document.getElementById('form-staff-id').value;
+            const dateVal = document.getElementById('form-date').value;
+            const delBtn = document.getElementById('btn-delete-record');
+
+            if (dateVal === selectedDate && staffId && dailyAttendance[staffId]) {
+                const rec = dailyAttendance[staffId];
+                const radio = document.querySelector(`input[name="mainCategory"][value="${rec.mainCategory}"]`);
+                if (radio) radio.checked = true;
+                updateReasonDropdown(rec.reasonDetail || "");
+                document.getElementById('form-time-start').value = rec.timeStart || '';
+                document.getElementById('form-time-end').value = rec.timeEnd || '';
+                document.getElementById('form-location').value = rec.location || '';
+                document.getElementById('form-event-title').value = rec.eventTitle || '';
+                document.getElementById('form-notes').value = rec.notes || '';
+                delBtn.classList.remove('hidden');
+            } else {
+                delBtn.classList.add('hidden');
+            }
+        };
+
+        window.clearStaffRecordFromModal = async () => {
+            const staffId = document.getElementById('form-staff-id').value;
+            const dateVal = document.getElementById('form-date').value;
+            if (!staffId || !dateVal) return;
+
+            const docId = `${dateVal}_${staffId}`;
+            try {
+                if (isCloudMode && db && currentUser) {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_records', docId));
+                } else if (dateVal === selectedDate) {
+                    delete dailyAttendance[staffId];
+                    renderDynamicTabs();
+                    renderAllViews();
+                }
+                closeModal('record-modal');
+                showToast("Status staf dikembalikan kepada Hadir Di Pejabat.");
+            } catch (err) {
+                console.error(err);
+                showToast("Gagal mengemaskini status.", "error");
+            }
+        };
+
+        function getDateRangeArray(startISO, endISO) {
+            const dates = [];
+            const [sy, sm, sd] = startISO.split('-').map(Number);
+            const [ey, em, ed] = endISO.split('-').map(Number);
+            let curr = new Date(sy, sm - 1, sd);
+            const end = new Date(ey, em - 1, ed);
+            while (curr <= end) {
+                const offset = curr.getTimezoneOffset() * 60000;
+                dates.push(new Date(curr.getTime() - offset).toISOString().split('T')[0]);
+                curr.setDate(curr.getDate() + 1);
+            }
+            return dates;
+        }
+
+        window.saveAttendanceRecord = async (e) => {
+            e.preventDefault();
+            const staffId = document.getElementById('form-staff-id').value;
+            const dateStartVal = document.getElementById('form-date').value;
+            const isMultiDay = document.getElementById('form-multi-day').checked;
+            const dateEndVal = isMultiDay ? document.getElementById('form-date-end').value : dateStartVal;
+
+            const mainCategory = document.querySelector('input[name="mainCategory"]:checked')?.value || "TIADA DI PEJABAT";
+            const reasonDetail = document.getElementById('form-reason-detail').value;
+            const timeStart = document.getElementById('form-time-start').value;
+            const timeEnd = document.getElementById('form-time-end').value;
+
+            const location = mainCategory === "TIADA DI PEJABAT" ? document.getElementById('form-location').value.trim() : "";
+            const eventTitle = mainCategory === "TIADA DI PEJABAT" ? document.getElementById('form-event-title').value.trim() : "";
+            const notes = mainCategory === "TIADA DI PEJABAT" ? document.getElementById('form-notes').value.trim() : "";
+
+            if (!staffId || !dateStartVal) {
+                showToast("Sila pilih nama dan tarikh.", "error");
+                return;
+            }
+
+            if (isMultiDay && (!dateEndVal || dateEndVal < dateStartVal)) {
+                showToast("Tarikh hingga mestilah sama atau selepas tarikh mula.", "error");
+                return;
+            }
+
+            const dateRange = getDateRangeArray(dateStartVal, dateEndVal);
+            if (dateRange.length > 60) {
+                showToast("Julat tarikh maksimum adalah 60 hari bagi satu pengisian.", "error");
+                return;
+            }
+
+            const staffObj = staffList.find(s => s.id === staffId);
+            const combinedSummaryNotes = mainCategory === "TIADA DI PEJABAT"
+                ? [eventTitle, location ? `(${location})` : '', notes].filter(Boolean).join(' ')
+                : "";
+
+            const btn = document.getElementById('btn-submit-record');
+            btn.disabled = true;
+
+            try {
+                const savePromises = dateRange.map(async (singleDate) => {
+                    const recordPayload = {
+                        staffId,
+                        staffName: staffObj ? staffObj.name : "",
+                        staffPosition: staffObj ? staffObj.position : "",
+                        date: singleDate,
+                        year: singleDate.substring(0, 4),
+                        month: singleDate.substring(5, 7),
+                        mainCategory,
+                        reasonDetail,
+                        location,
+                        eventTitle,
+                        timeStart,
+                        timeEnd,
+                        notes: combinedSummaryNotes,
+                        updatedAt: new Date().toISOString()
+                    };
+
+                    const docId = `${singleDate}_${staffId}`;
+                    if (isCloudMode && db && currentUser) {
+                        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_records', docId), recordPayload);
+                    } else {
+                        if (singleDate === selectedDate) {
+                            dailyAttendance[staffId] = recordPayload;
+                        }
+                        yearlyRecordsCache = yearlyRecordsCache.filter(r => !(r.date === singleDate && r.staffId === staffId));
+                        yearlyRecordsCache.push(recordPayload);
+                    }
+                });
+
+                await Promise.all(savePromises);
+
+                if (!isCloudMode) {
+                    renderDynamicTabs();
+                    renderAllViews();
+                }
+
+                closeModal('record-modal');
+                const dayMsg = dateRange.length > 1 ? ` (${dateRange.length} hari)` : "";
+                showToast(`Rekod ${staffObj ? staffObj.name : ''}${dayMsg} berjaya disimpan.`);
+            } catch (err) {
+                console.error("Ralat simpan rekod:", err);
+                showToast("Gagal menyimpan rekod.", "error");
+            } finally {
+                btn.disabled = false;
+            }
+        };
+
+        // 10. PANEL KAWALAN ADMIN, LAPORAN PDF, PENGUMUMAN & RESET BERGANDA
+        window.openAdminAuthModal = () => {
+            document.getElementById('admin-pin-input').value = '';
+            document.getElementById('admin-auth-modal').classList.remove('hidden');
+            setTimeout(() => document.getElementById('admin-pin-input').focus(), 100);
+        };
+
+        window.verifyAdminPin = (e) => {
+            e.preventDefault();
+            const entered = document.getElementById('admin-pin-input').value.trim();
+            if (entered === appSettings.adminPin) {
+                closeModal('admin-auth-modal');
+                openAdminPanel();
+            } else {
+                showToast("Kata laluan pentadbir tidak sah!", "error");
+            }
+        };
+
+        function populateAdminFilterOptions() {
+            const yearSelect = document.getElementById('admin-filter-year');
+            if (yearSelect && yearSelect.options.length === 0) {
+                const curYear = new Date().getFullYear();
+                for (let y = curYear + 1; y >= curYear - 4; y--) {
+                    const opt = document.createElement('option');
+                    opt.value = String(y);
+                    opt.textContent = `Tahun ${y}`;
+                    if (y === curYear) opt.selected = true;
+                    yearSelect.appendChild(opt);
+                }
+            }
+
+            const staffSelect = document.getElementById('admin-filter-staff');
+            if (staffSelect) {
+                const prev = staffSelect.value;
+                staffSelect.innerHTML = '<option value="ALL">-- Semua Staf --</option>';
+                staffList.forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.id;
+                    opt.textContent = s.name;
+                    staffSelect.appendChild(opt);
+                });
+                if (prev) staffSelect.value = prev;
+            }
+
+            const reasonSelect = document.getElementById('admin-filter-reason');
+            if (reasonSelect && reasonSelect.options.length <= 1) {
+                Object.keys(REASON_GROUPS).forEach(mainKey => {
+                    REASON_GROUPS[mainKey].forEach(grp => {
+                        const og = document.createElement('optgroup');
+                        og.label = grp.group;
+                        grp.items.forEach(item => {
+                            const opt = document.createElement('option');
+                            opt.value = item;
+                            opt.textContent = item;
+                            og.appendChild(opt);
+                        });
+                        reasonSelect.appendChild(og);
+                    });
+                });
+            }
+        }
+
+        async function openAdminPanel() {
+            populateAdminFilterOptions();
+            renderAdminStaffList();
+            renderAdminTabsList();
+            loadAnnouncementIntoAdminForm();
+
+            document.getElementById('setting-app-title').value = appSettings.appTitle;
+            document.getElementById('setting-app-subtitle').value = appSettings.appSubtitle;
+            document.getElementById('setting-admin-pin').value = appSettings.adminPin;
+
+            switchAdminTab('reports');
+            document.getElementById('admin-panel-modal').classList.remove('hidden');
+            await loadYearlyRecordsForAdmin();
+        }
+
+        window.switchAdminTab = (tabName) => {
+            ['reports', 'announcement', 'staff', 'tabs', 'system'].forEach(t => {
+                document.getElementById(`admin-tab-${t}`).classList.add('hidden');
+                const btn = document.getElementById(`tab-btn-${t}`);
+                btn.className = "admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold text-slate-600 hover:text-navy-900 whitespace-nowrap cursor-pointer";
+            });
+
+            document.getElementById(`admin-tab-${tabName}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            activeBtn.className = "admin-tab-btn px-3.5 py-2.5 rounded-t-xl text-xs font-bold bg-white text-navy-900 border-t border-x border-slate-200 whitespace-nowrap cursor-pointer";
+        };
+
+        window.toggleMonthSelector = () => {
+            const type = document.getElementById('admin-report-type').value;
+            const wrap = document.getElementById('admin-month-wrap');
+            if (type === 'MONTHLY' || type === 'INDIVIDUAL_MONTHLY') {
+                wrap.classList.remove('hidden');
+            } else {
+                wrap.classList.add('hidden');
+            }
+        };
+
+        window.loadYearlyRecordsForAdmin = async () => {
+            const targetYear = document.getElementById('admin-filter-year').value;
+            if (isCloudMode && db && currentUser) {
+                try {
+                    const snap = await getDocs(collection(db, 'artifacts', appId, 'public', 'data', 'spi_records'));
+                    const list = [];
+                    snap.forEach(d => {
+                        const data = d.data();
+                        const recYear = data.year || (data.date ? data.date.substring(0, 4) : '');
+                        if (recYear === targetYear) {
+                            list.push({ docId: d.id, ...data });
+                        }
+                    });
+                    yearlyRecordsCache = list;
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+            renderAdminReportTable();
+        };
+
+        window.renderAdminReportTable = () => {
+            const year = document.getElementById('admin-filter-year').value;
+            const reportType = document.getElementById('admin-report-type').value;
+            const month = document.getElementById('admin-filter-month').value;
+            const staffFilter = document.getElementById('admin-filter-staff').value;
+            const reasonFilter = document.getElementById('admin-filter-reason').value;
+            const isMonthly = reportType === 'MONTHLY' || reportType === 'INDIVIDUAL_MONTHLY';
+            const isIndividual = reportType === 'INDIVIDUAL_YEARLY' || reportType === 'INDIVIDUAL_MONTHLY';
+
+            let filtered = yearlyRecordsCache.filter(r => {
+                const rYear = r.year || (r.date ? r.date.substring(0, 4) : '');
+                if (rYear !== year) return false;
+                if (isMonthly) {
+                    const rMonth = r.month || (r.date ? r.date.substring(5, 7) : '');
+                    if (rMonth !== month) return false;
+                }
+                if (staffFilter !== 'ALL' && r.staffId !== staffFilter) return false;
+                if (reasonFilter !== 'ALL' && r.reasonDetail !== reasonFilter) return false;
+                return true;
+            });
+
+            filtered.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+            const headingEl = document.getElementById('pdf-report-heading');
+            const subheadingEl = document.getElementById('pdf-report-subheading');
+            const monthNames = { "01": "JANUARI", "02": "FEBRUARI", "03": "MAC", "04": "APRIL", "05": "MEI", "06": "JUN", "07": "JULAI", "08": "OGOS", "09": "SEPTEMBER", "10": "OKTOBER", "11": "NOVEMBER", "12": "DISEMBER" };
+
+            if (isIndividual) {
+                const stObj = staffList.find(s => s.id === staffFilter);
+                const periodLabel = isMonthly ? `BULAN ${monthNames[month] || ''} ${year}` : `TAHUN ${year}`;
+                headingEl.textContent = `LAPORAN INDIVIDU (${periodLabel}) - ${stObj ? stObj.name : 'SEMUA STAF'}`;
+            } else if (reportType === 'MONTHLY') {
+                headingEl.textContent = `LAPORAN KEBERADAAN BULANAN PENUH SEKTOR - BULAN ${monthNames[month] || ''} ${year}`;
+            } else {
+                headingEl.textContent = `LAPORAN KEBERADAAN TAHUNAN PENUH SEKTOR - TAHUN ${year}`;
+            }
+
+            subheadingEl.textContent = `${appSettings.appTitle} • ${reasonFilter !== 'ALL' ? 'Penapis: ' + reasonFilter : 'Semua Kategori Ketidakhadiran & Urusan Luar'}`;
+            document.getElementById('pdf-total-count').textContent = `Jumlah Rekod: ${filtered.length}`;
+            document.getElementById('pdf-generated-date').textContent = `Dijana pada: ${formatMalayDate(getTodayISO())}`;
+
+            const tbody = document.getElementById('admin-report-tbody');
+            tbody.innerHTML = '';
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-500">Tiada rekod ketidakhadiran atau urusan luar bagi kriteria pilihan ini.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach((rec, idx) => {
+                const stObj = staffList.find(s => s.id === rec.staffId);
+                const nameDisplay = rec.staffName || (stObj ? stObj.name : rec.staffId);
+                const posDisplay = rec.staffPosition || (stObj ? stObj.position : '');
+                const timeInfo = (rec.timeStart || rec.timeEnd) ? `[${rec.timeStart || ''} - ${rec.timeEnd || ''}] ` : '';
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50";
+                tr.innerHTML = `
+                    <td class="p-2.5 text-center font-bold text-slate-600">${idx + 1}</td>
+                    <td class="p-2.5 font-semibold text-navy-900 whitespace-nowrap">${rec.date}</td>
+                    <td class="p-2.5">
+                        <div class="font-bold text-navy-900">${escapeHTML(nameDisplay)}</div>
+                        <div class="text-[10px] text-slate-500">${escapeHTML(posDisplay)}</div>
+                    </td>
+                    <td class="p-2.5 font-bold ${rec.mainCategory === 'TIADA DI PEJABAT' ? 'text-blue-800' : 'text-amber-800'}">${escapeHTML(rec.mainCategory || '')}</td>
+                    <td class="p-2.5 font-semibold text-slate-800">${escapeHTML(rec.reasonDetail || '')}</td>
+                    <td class="p-2.5 text-slate-600">${escapeHTML(timeInfo + (rec.notes || '-'))}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        };
+
+        window.printReportToPDF = () => {
+            window.print();
+        };
+
+        // 11. PENGURUSAN PENGUMUMAN
+        function loadAnnouncementIntoAdminForm() {
+            document.getElementById('ann-active-toggle').checked = !!announcementData.active;
+            document.getElementById('ann-mode-select').value = announcementData.mode || "BOTH";
+            document.getElementById('ann-title-input').value = announcementData.title || "";
+            document.getElementById('ann-text-input').value = announcementData.text || "";
+            document.getElementById('ann-image-url').value = announcementData.imageUrl || "";
+            toggleAnnouncementFields();
+            previewAnnouncementImage();
+        }
+
+        window.toggleAnnouncementFields = () => {
+            const mode = document.getElementById('ann-mode-select').value;
+            const textWrap = document.getElementById('ann-text-field-wrap');
+            const imgWrap = document.getElementById('ann-image-field-wrap');
+
+            if (mode === 'TEXT') {
+                textWrap.classList.remove('hidden');
+                imgWrap.classList.add('hidden');
+            } else if (mode === 'IMAGE') {
+                textWrap.classList.add('hidden');
+                imgWrap.classList.remove('hidden');
+            } else {
+                textWrap.classList.remove('hidden');
+                imgWrap.classList.remove('hidden');
+            }
+        };
+
+        window.handleAnnouncementImageUpload = (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const maxW = 800;
+                    const scale = img.width > maxW ? maxW / img.width : 1;
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    const compressed = canvas.toDataURL('image/jpeg', 0.8);
+                    document.getElementById('ann-image-url').value = compressed;
+                    previewAnnouncementImage();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.previewAnnouncementImage = () => {
+            const url = document.getElementById('ann-image-url').value.trim();
+            const imgEl = document.getElementById('ann-preview-img');
+            const placeholder = document.getElementById('ann-preview-placeholder');
+            const clearBtn = document.getElementById('btn-clear-ann-img');
+
+            if (url) {
+                imgEl.src = url;
+                imgEl.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                clearBtn.classList.remove('hidden');
+            } else {
+                imgEl.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+                clearBtn.classList.add('hidden');
+            }
+        };
+
+        window.clearAnnouncementImage = () => {
+            document.getElementById('ann-image-url').value = '';
+            document.getElementById('ann-image-file').value = '';
+            previewAnnouncementImage();
+        };
+
+        window.saveAnnouncementSettings = async () => {
+            const payload = {
+                active: document.getElementById('ann-active-toggle').checked,
+                mode: document.getElementById('ann-mode-select').value,
+                title: document.getElementById('ann-title-input').value.trim() || "PENGUMUMAN SEKTOR",
+                text: document.getElementById('ann-text-input').value.trim(),
+                imageUrl: document.getElementById('ann-image-url').value.trim(),
+                updatedAt: new Date().toISOString()
+            };
+
+            announcementData = payload;
+            if (isCloudMode && db && currentUser) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'announcement'), payload);
+            }
+            hasShownInitialPopup = false;
+            applyAnnouncementUI();
+            showToast("Pengumuman berjaya dikemaskini!");
+        };
+
+        // 12. PENGURUSAN STAF (PERPINDAHAN MASUK / KELUAR)
+        function renderAdminStaffList() {
+            const container = document.getElementById('admin-staff-list');
+            document.getElementById('admin-staff-count').textContent = staffList.length;
+            container.innerHTML = '';
+
+            staffList.forEach((staf, idx) => {
+                const row = document.createElement('div');
+                row.className = "p-3 flex items-center justify-between gap-3 bg-white hover:bg-slate-50";
+                row.innerHTML = `
+                    <div class="flex items-center gap-3 min-w-0">
+                        <span class="w-6 h-6 rounded-md bg-navy-100 text-navy-900 font-bold text-xs flex items-center justify-center flex-shrink-0">${idx + 1}</span>
+                        <div class="min-w-0">
+                            <p class="font-bold text-xs sm:text-sm text-navy-900 truncate">${staf.name}</p>
+                            <p class="text-[11px] text-slate-500">${staf.position} • <span class="font-semibold">${staf.category}</span></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 flex-shrink-0">
+                        <button type="button" onclick="moveStaffOrder(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} class="w-7 h-7 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-30 text-xs cursor-pointer"><i class="fa-solid fa-arrow-up"></i></button>
+                        <button type="button" onclick="moveStaffOrder(${idx}, 1)" ${idx === staffList.length - 1 ? 'disabled' : ''} class="w-7 h-7 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-30 text-xs cursor-pointer"><i class="fa-solid fa-arrow-down"></i></button>
+                        <button type="button" onclick="removeStaff('${staf.id}')" class="w-7 h-7 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 text-xs ml-1 cursor-pointer" title="Perpindahan Keluar">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        window.autoSelectCategoryFromPosition = () => {
+            const pos = document.getElementById('new-staff-position').value;
+            document.getElementById('new-staff-category').value = pos === 'ANGGOTA KUMPULAN PELAKSANA' ? 'AKP' : 'PEGAWAI';
+        };
+
+        window.addNewStaff = async (e) => {
+            e.preventDefault();
+            const nameInput = document.getElementById('new-staff-name');
+            const name = nameInput.value.trim().toUpperCase();
+            const position = document.getElementById('new-staff-position').value;
+            const category = document.getElementById('new-staff-category').value;
+            if (!name) return;
+
+            const newStaff = {
+                id: 'staf_' + Date.now(),
+                order: staffList.length + 1,
+                name,
+                position,
+                category
+            };
+
+            const updatedList = [...staffList, newStaff];
+            await persistStaffList(updatedList);
+            nameInput.value = '';
+            showToast(`${name} berjaya ditambah.`);
+        };
+
+        window.removeStaff = async (staffId) => {
+            const target = staffList.find(s => s.id === staffId);
+            if (!target) return;
+            const updatedList = staffList.filter(s => s.id !== staffId).map((item, idx) => ({ ...item, order: idx + 1 }));
+            await persistStaffList(updatedList);
+            showToast(`${target.name} telah dikeluarkan dari senarai.`);
+        };
+
+        window.moveStaffOrder = async (index, direction) => {
+            const newIdx = index + direction;
+            if (newIdx < 0 || newIdx >= staffList.length) return;
+            const copy = [...staffList];
+            const temp = copy[index];
+            copy[index] = copy[newIdx];
+            copy[newIdx] = temp;
+            const reordered = copy.map((item, idx) => ({ ...item, order: idx + 1 }));
+            await persistStaffList(reordered);
+        };
+
+        async function persistStaffList(updatedList) {
+            staffList = updatedList;
+            renderAdminStaffList();
+            populateAdminFilterOptions();
+            renderDynamicTabs();
+            renderAllViews();
+
+            if (isCloudMode && db && currentUser) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'staff_directory'), { items: updatedList });
+            }
+        }
+
+        // 13. PENGURUSAN TAB MENU DINAMIK (5 SEBARIS, TAMBAH TAB BAHARU)
+        function renderAdminTabsList() {
+            const container = document.getElementById('admin-tabs-list');
+            container.innerHTML = '';
+
+            menuTabs.forEach((tab, idx) => {
+                const div = document.createElement('div');
+                div.className = "p-3 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-2";
+                div.innerHTML = `
+                    <div class="min-w-0">
+                        <span class="text-[10px] font-bold text-slate-400">Tab #${idx + 1} (Baris ${Math.floor(idx / 4) + 1})</span>
+                        <p class="font-bold text-xs text-navy-900 truncate">${tab.label}</p>
+                        <p class="text-[10px] text-slate-500">${tab.filterType}</p>
+                    </div>
+                    ${tab.locked
+                        ? `<span class="text-[10px] font-bold px-2 py-1 rounded bg-slate-100 text-slate-500">Utama</span>`
+                        : `<button type="button" onclick="deleteMenuTab('${tab.id}')" class="w-7 h-7 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 text-xs cursor-pointer"><i class="fa-solid fa-trash-can"></i></button>`
+                    }
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        window.addNewMenuTab = async (e) => {
+            e.preventDefault();
+            const label = document.getElementById('new-tab-label').value.trim().toUpperCase();
+            const filterType = document.getElementById('new-tab-filter').value;
+            if (!label) return;
+
+            const newTab = {
+                id: 'tab_' + Date.now(),
+                label,
+                filterType,
+                color: 'indigo',
+                icon: 'fa-filter',
+                locked: false
+            };
+
+            const updated = [...menuTabs, newTab];
+            menuTabs = updated;
+            renderAdminTabsList();
+            renderDynamicTabs();
+            document.getElementById('new-tab-label').value = '';
+
+            if (isCloudMode && db && currentUser) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'menu_tabs'), { items: updated });
+            }
+            showToast(`Tab menu "${label}" berjaya ditambah!`);
+        };
+
+        window.deleteMenuTab = async (tabId) => {
+            const updated = menuTabs.filter(t => t.id !== tabId);
+            menuTabs = updated;
+            if (activeTabId === tabId) activeTabId = 'tab_out_office';
+            renderAdminTabsList();
+            renderDynamicTabs();
+            renderAllViews();
+
+            if (isCloudMode && db && currentUser) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'menu_tabs'), { items: updated });
+            }
+            showToast("Tab menu dipadam.");
+        };
+
+        // 14. TETAPAN SISTEM & RESET KESELURUHAN DENGAN PENGESAHAN BERGANDA
+        function applySettingsUI() {
+            document.getElementById('app-main-title').textContent = appSettings.appTitle;
+            document.getElementById('app-sub-title').textContent = appSettings.appSubtitle;
+            document.title = appSettings.appTitle;
+        }
+
+        window.saveSystemSettings = async (e) => {
+            e.preventDefault();
+            const newTitle = document.getElementById('setting-app-title').value.trim();
+            const newSub = document.getElementById('setting-app-subtitle').value.trim();
+            const newPin = document.getElementById('setting-admin-pin').value.trim();
+
+            if (!newPin) {
+                showToast("Kata laluan admin tidak boleh kosong.", "error");
+                return;
+            }
+
+            appSettings = { appTitle: newTitle, appSubtitle: newSub, adminPin: newPin };
+            applySettingsUI();
+
+            if (isCloudMode && db && currentUser) {
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_config', 'app_settings'), appSettings);
+            }
+            showToast("Tetapan sistem berjaya disimpan!");
+        };
+
+        window.openDoubleConfirmResetModal = () => {
+            document.getElementById('reset-double-confirm-check').checked = false;
+            document.getElementById('reset-confirm-password').value = '';
+            document.getElementById('double-confirm-reset-modal').classList.remove('hidden');
+        };
+
+        window.executeFullSystemReset = async () => {
+            const isChecked = document.getElementById('reset-double-confirm-check').checked;
+            const passInput = document.getElementById('reset-confirm-password').value.trim();
+
+            if (!isChecked) {
+                showToast("Sila tandakan kotak pengesahan keselamatan terlebih dahulu.", "error");
+                return;
+            }
+
+            if (passInput !== appSettings.adminPin) {
+                showToast("Kata laluan pentadbir tidak sepadan. Proses dibatalkan.", "error");
+                return;
+            }
+
+            try {
+                if (isCloudMode && db && currentUser) {
+                    const snap = await getDocs(collection(db, 'artifacts', appId, 'public', 'data', 'spi_records'));
+                    const deletePromises = [];
+                    snap.forEach(docSnap => {
+                        deletePromises.push(deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'spi_records', docSnap.id)));
+                    });
+                    await Promise.all(deletePromises);
+                }
+
+                dailyAttendance = {};
+                yearlyRecordsCache = [];
+                renderDynamicTabs();
+                renderAllViews();
+                renderAdminReportTable();
+
+                closeModal('double-confirm-reset-modal');
+                showToast("Semua rekod keberadaan dalam sistem telah berjaya ditetapkan semula.");
+            } catch (err) {
+                console.error("Ralat reset rekod:", err);
+                showToast("Gagal menetapkan semula rekod sistem.", "error");
+            }
+        };
+
+        // 15. HELPER MODAL & PWA INSTALL
+        window.closeModal = (modalId) => {
+            document.getElementById(modalId).classList.add('hidden');
+        };
+
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const btn = document.getElementById('btn-install-app');
+            if (btn) {
+                btn.classList.remove('hidden');
+                btn.classList.add('flex');
+            }
+        });
+
+        window.triggerInstallPWA = async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                document.getElementById('btn-install-app').classList.add('hidden');
+            }
+            deferredPrompt = null;
+        };
+
+        window.addEventListener('load', initApp);
+    </script>
+</body>
+</html>
