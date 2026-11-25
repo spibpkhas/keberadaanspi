@@ -299,8 +299,8 @@
             <p class="font-semibold text-navy-900">Sektor Pembangunan Instruksional • Bahagian Pendidikan Khas (BPKhas)</p>
             <p>Staf yang tidak mengisi borang secara automatik dikira hadir di pejabat.</p>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 pt-2 border-t border-slate-100 text-center">
-            <p class="text-[10px] text-slate-400 tracking-wide">created by sabsolhi_skpkmiri</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 pt-2 border-t border-slate-100 text-right">
+            <p class="text-[8px] text-slate-400 tracking-wide">created by sabsolhi_skpkmiri</p>
         </div>
     </footer>
 
@@ -1029,26 +1029,37 @@
             renderAllViews();
 
             try {
-                if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-                    const firebaseConfig = JSON.parse(__firebase_config);
-                    const app = initializeApp(firebaseConfig);
-                    auth = getAuth(app);
-                    db = getFirestore(app);
+                const defaultFirebaseConfig = {
+                    apiKey: "AIzaSyDZPNjuPmOzLDmz2B42ERicAopAunxSy7g",
+                    authDomain: "keberadaanspi.firebaseapp.com",
+                    projectId: "keberadaanspi",
+                    storageBucket: "keberadaanspi.firebasestorage.app",
+                    messagingSenderId: "544432915087",
+                    appId: "1:544432915087:web:b1c27a0bda7af96febe6fa",
+                    measurementId: "G-CCWEVL19TH"
+                };
 
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        const cred = await signInWithCustomToken(auth, __initial_auth_token);
-                        currentUser = cred.user;
-                    } else {
-                        const cred = await signInAnonymously(auth);
-                        currentUser = cred.user;
-                    }
+                const firebaseConfig = (typeof __firebase_config !== 'undefined' && __firebase_config)
+                    ? JSON.parse(__firebase_config)
+                    : defaultFirebaseConfig;
 
-                    if (currentUser) {
-                        isCloudMode = true;
-                        document.getElementById('sync-dot').className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
-                        document.getElementById('sync-label').textContent = "Tersambung (Semua Peranti)";
-                        await setupRealtimeListeners();
-                    }
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    const cred = await signInWithCustomToken(auth, __initial_auth_token);
+                    currentUser = cred.user;
+                } else {
+                    const cred = await signInAnonymously(auth);
+                    currentUser = cred.user;
+                }
+
+                if (currentUser) {
+                    isCloudMode = true;
+                    document.getElementById('sync-dot').className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+                    document.getElementById('sync-label').textContent = "Tersambung (Semua Peranti)";
+                    await setupRealtimeListeners();
                 } else {
                     activateLocalPreviewFallback();
                 }
